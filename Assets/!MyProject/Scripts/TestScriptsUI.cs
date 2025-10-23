@@ -53,6 +53,6 @@ public class TestScriptsUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void OnDisable()
     {
-            StopCoroutine(animationCoroutine);
+        StopCoroutine(animationCoroutine);
     }
 }
