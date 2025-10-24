@@ -18,7 +18,6 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
-        rb.freezeRotation = true;
 
         FindTarget();
     }
