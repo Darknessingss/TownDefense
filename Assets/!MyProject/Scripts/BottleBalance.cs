@@ -32,9 +32,15 @@ public class BottleBalance : MonoBehaviour
     private List<GameObject> spawnedPeasants = new List<GameObject>();
     private List<GameObject> spawnedWarriors = new List<GameObject>();
 
+    [Header("ButtonUI")]
+    [SerializeField] private Button PeasantBuyButtonStatus;
+    [SerializeField] private Button WarriorBuyButtonStatus;
+
     private void Start()
     {
         UpdatePeasantLimitUI();
+        UpdateUIBuyPeasant();
+        UpdateUIBuyWarrior();
     }
 
     public void OnWarriorBuyButtonClick()
@@ -66,7 +72,7 @@ public class BottleBalance : MonoBehaviour
                 else
                 {
                     Debug.Log($"Лимит крестьян достигнут! Максимум: {peasantLimit}");
-                }
+                }   
             }
         }
     }
@@ -135,6 +141,26 @@ public class BottleBalance : MonoBehaviour
         }
 
         UpdatePeasantLimitUI();
+        UpdateUIBuyPeasant();
+        UpdateUIBuyWarrior();
+    }
+
+    private void UpdateUIBuyPeasant()
+    {
+        if (PeasantBuyButtonStatus != null)
+        {
+            bool canBuy = BottleWallet >= 2 && spawnedPeasants.Count < peasantLimit;
+            PeasantBuyButtonStatus.interactable = canBuy;
+        }
+    }
+
+    private void UpdateUIBuyWarrior()
+    {
+        if (WarriorBuyButtonStatus != null)
+        {
+            bool canBuy = BottleWallet >= 5;
+            WarriorBuyButtonStatus.interactable = canBuy;
+        }
     }
 
     public void ForceCleanup()
@@ -167,6 +193,12 @@ public class BottleBalance : MonoBehaviour
     public void AddBottle(int amount)
     {
         BottleWallet += amount;
+        UpdateBottleUI();
+    }
+
+    public void MinusBottle(int amount)
+    {
+        BottleWallet -= amount;
         UpdateBottleUI();
     }
 

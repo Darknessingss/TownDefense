@@ -1379,7 +1379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.05896, y: 68.29297}
+  m_AnchoredPosition: {x: 13.059082, y: 68.29297}
   m_SizeDelta: {x: -1227.987, y: -1824.882}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144809549
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   maxWave: 10
   maxEnemiesAtWave10: 25
   timerSlider: {fileID: 1986274440}
-  waveCooldown: 25
+  waveCooldown: 15
 --- !u!1 &211694093
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,7 +3107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.05896, y: 68.29297}
+  m_AnchoredPosition: {x: 13.059082, y: 68.29297}
   m_SizeDelta: {x: -1227.987, y: -1824.882}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286501890
@@ -7291,7 +7291,7 @@ Transform:
   m_GameObject: {fileID: 707686959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 9752.3, y: 8756.9, z: -369.5}
+  m_LocalPosition: {x: 9830.5, y: 8756.9, z: -439.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7655,7 +7655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 591.4523, y: 18.785522}
+  m_AnchoredPosition: {x: 591.45215, y: 18.785645}
   m_SizeDelta: {x: 1.063, y: 893.7722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763409550
@@ -9125,6 +9125,8 @@ MonoBehaviour:
   spawnWarrior: {fileID: 1859287746}
   spawnPeasant: {fileID: 2057936099}
   peasantLimit: 8
+  PeasantBuyButtonStatus: {fileID: 286501890}
+  WarriorBuyButtonStatus: {fileID: 144809549}
 --- !u!1001 &870984367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12435,7 +12437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -631.49054, y: 20.499084}
+  m_AnchoredPosition: {x: -631.4907, y: 20.499023}
   m_SizeDelta: {x: -157.5762, y: 901.2646}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243429124
@@ -16257,6 +16259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d740be54358084fa0fd80aa2b9d081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 0}
 --- !u!1001 &1708219025
 PrefabInstance:
   m_ObjectHideFlags: 0
