@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 300
   currentHealth: 0
-  moveSpeed: 15
+  moveSpeed: 10
   rotationSpeed: 15
   stopDistance: 1
 --- !u!54 &-1233447760179705711

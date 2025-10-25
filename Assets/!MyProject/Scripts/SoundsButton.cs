@@ -13,7 +13,6 @@ public class SoundsButton : MonoBehaviour
 
     void PlayClickSound()
     {
-        // Используем SoundManager вместо PlayClipAtPoint
         if (SoundManager.Instance != null && clickSound != null)
         {
             SoundManager.Instance.PlaySound(clickSound);
