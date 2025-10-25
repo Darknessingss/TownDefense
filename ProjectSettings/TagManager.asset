@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Peasant
   - Stack
+  - Chest
   layers:
   - Default
   - TransparentFX
