@@ -121,7 +121,6 @@ GameObject:
   - component: {fileID: 2358605534571248030}
   - component: {fileID: -4470163296906703216}
   - component: {fileID: -8849667746635826540}
-  - component: {fileID: -6449363850222960893}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Warrior
@@ -184,19 +183,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5a6658cb4f7544289ff80e0245fdf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
---- !u!114 &-6449363850222960893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7643071048097620804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5a6658cb4f7544289ff80e0245fdf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 300
   currentHealth: 0

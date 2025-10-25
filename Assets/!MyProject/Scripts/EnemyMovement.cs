@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHealth = 100;
+    public int maxHealth = 300;
     public float currentHealth;
 
     [Header("Movement Settings")]
@@ -45,36 +45,77 @@ public class EnemyMovement : MonoBehaviour
 
             Die();
         }
+
+        if (collision.gameObject.CompareTag("Peasant"))
+        {
+            Debug.Log("Столкновение с крестьянином!");
+            Destroy(collision.gameObject);
+
+            target = null;
+            FindTarget();
+
+            Health();
+        }
     }
+
 
     void Die()
     {
         Destroy(gameObject);
     }
 
+    void Health()
+    {
+        maxHealth -= 100;
+        if (maxHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     void FindTarget()
     {
         GameObject[] warriors = GameObject.FindGameObjectsWithTag("Warrior");
-        if (warriors.Length == 0)
+        if (warriors.Length > 0)
         {
-            target = null;
+            float minDistance = Mathf.Infinity;
+            Transform nearest = null;
+
+            foreach (GameObject warrior in warriors)
+            {
+                float dist = Vector3.Distance(transform.position, warrior.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    nearest = warrior.transform;
+                }
+            }
+
+            target = nearest;
             return;
         }
 
-        float minDistance = Mathf.Infinity;
-        Transform nearest = null;
-
-        foreach (GameObject warrior in warriors)
+        GameObject[] peasants = GameObject.FindGameObjectsWithTag("Peasant");
+        
+        if (peasants.Length > 0)
         {
-            float dist = Vector3.Distance(transform.position, warrior.transform.position);
-            if (dist < minDistance)
-            {
-                minDistance = dist;
-                nearest = warrior.transform;
-            }
-        }
+            float minDistance = Mathf.Infinity;
+            Transform nearest = null;
 
-        target = nearest;
+            foreach (GameObject peasant in peasants)
+            {
+                float dist = Vector3.Distance(transform.position, peasant.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    nearest = peasant.transform;
+                }
+            }
+
+            target = nearest;
+            return;
+        }
+        target = null;
     }
 
     void MoveTowardsTarget()

@@ -7,9 +7,10 @@ TagManager:
   - Ground
   - Warrior
   - Enemy
-  - Peasant
   - Stack
   - Chest
+  - BottleFull
+  - Peasant
   layers:
   - Default
   - TransparentFX

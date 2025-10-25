@@ -7,7 +7,6 @@ public class DistanceUI : MonoBehaviour
     public GameObject uiPanel;
     
     [Header("Settings")]
-    public bool pauseGame = false; 
     public bool showCursor = true; 
 
     private bool wasCursorVisible;
@@ -15,7 +14,6 @@ public class DistanceUI : MonoBehaviour
 
     private void Start()
     {
-        if (uiPanel != null)
             uiPanel.SetActive(false);
     }
 
@@ -37,7 +35,6 @@ public class DistanceUI : MonoBehaviour
 
     private void ShowUI()
     {
-        if (uiPanel != null)
         {
             wasCursorVisible = Cursor.visible;
             previousCursorLockState = Cursor.lockState;
@@ -50,8 +47,6 @@ public class DistanceUI : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
             
-            if (pauseGame)
-                Time.timeScale = 0f;
         }
         
         Debug.Log("UI показан, курсор включен");
@@ -59,15 +54,11 @@ public class DistanceUI : MonoBehaviour
 
     private void HideUI()
     {
-        if (uiPanel != null)
         {
             uiPanel.SetActive(false);
             
             Cursor.visible = wasCursorVisible;
             Cursor.lockState = previousCursorLockState;
-            
-            if (pauseGame)
-                Time.timeScale = 1f;
         }
         
         Debug.Log("UI скрыт, курсор восстановлен");

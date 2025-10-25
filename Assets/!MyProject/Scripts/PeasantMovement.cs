@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WarriorMovement : MonoBehaviour
+public class PeasantMovement : MonoBehaviour
 {
-    public int maxHealth = 300;
+    public int maxHealth = 100;
     public int currentHealth;
 
     void Start()

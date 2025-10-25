@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeed3b1c7e9a46045a9a2c7122e40137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 300
   currentHealth: 0
-  moveSpeed: 5
+  moveSpeed: 15
   rotationSpeed: 15
   stopDistance: 1
 --- !u!54 &-1233447760179705711
