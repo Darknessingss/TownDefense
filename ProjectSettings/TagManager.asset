@@ -11,6 +11,7 @@ TagManager:
   - Chest
   - BottleFull
   - Peasant
+  - BaseBuyer
   layers:
   - Default
   - TransparentFX

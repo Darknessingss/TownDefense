@@ -9,6 +9,8 @@ public class PauseGameManager : MonoBehaviour
 {
     private bool isPaused = false;
 
+    public MonoBehaviour PlayerMovement;
+
     [SerializeField] private GameObject PauseMenu;
 
     void Start()
@@ -37,6 +39,7 @@ public class PauseGameManager : MonoBehaviour
             if (PauseMenu != null)
             {
                 PauseMenu.SetActive(true);
+                PlayerMovement.enabled = false;
             }
             Time.timeScale = 0;
 
@@ -56,6 +59,7 @@ public class PauseGameManager : MonoBehaviour
         if (PauseMenu != null)
         {
             PauseMenu.SetActive(false);
+            PlayerMovement.enabled = true;
         }
         Time.timeScale = 1;
 

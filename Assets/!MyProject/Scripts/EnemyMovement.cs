@@ -56,6 +56,31 @@ public class EnemyMovement : MonoBehaviour
 
             Health();
         }
+
+    if (collision.gameObject.CompareTag("BaseBuyer"))
+        {
+            Debug.Log("Столкновение с базой!");
+        
+            BaseGamePlay baseGamePlay = collision.gameObject.GetComponent<BaseGamePlay>();
+            if (baseGamePlay != null)
+            {
+             baseGamePlay.TakeDamage(300);
+            }
+        
+            TakeDamage(300);
+        
+            target = null;
+            FindTarget();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
 
@@ -95,8 +120,9 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+
+
         GameObject[] peasants = GameObject.FindGameObjectsWithTag("Peasant");
-        
         if (peasants.Length > 0)
         {
             float minDistance = Mathf.Infinity;
@@ -116,7 +142,29 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
         target = null;
+        
+        GameObject[] BaseBuyer = GameObject.FindGameObjectsWithTag("BaseBuyer");
+        if (BaseBuyer.Length > 0)
+        {
+            float minDistance = Mathf.Infinity;
+            Transform nearest = null;
+
+            foreach (GameObject BaseBuyers in BaseBuyer)
+            {
+                float dist = Vector3.Distance(transform.position, BaseBuyers.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    nearest = BaseBuyers.transform;
+                }
+            }
+
+            target = nearest;
+            return;
+        }
     }
+
+    
 
     void MoveTowardsTarget()
     {
