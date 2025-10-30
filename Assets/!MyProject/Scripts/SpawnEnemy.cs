@@ -2,6 +2,8 @@ using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Runtime.CompilerServices;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class SpawnEnemy : MonoBehaviour
     public int maxWave = 10;
     public Slider timerSlider;
     public float waveCooldown = 10f;
+    public TMP_Text waveCounterText;
 
     private int enemiesPerWave;
     private float currentTimer;
@@ -50,6 +53,8 @@ public class SpawnEnemy : MonoBehaviour
             WinScreen.SetActive(false);
         }
         Time.timeScale = 1;
+
+        UpdateWaveCounter();
     }
 
     void Update()
@@ -110,6 +115,7 @@ public class SpawnEnemy : MonoBehaviour
         Debug.Log($"First wave: Spawned 1 enemy");
 
         currentWave = 2;
+        UpdateWaveCounter();
     }
 
     void SpawnPartialWave()
@@ -127,6 +133,8 @@ public class SpawnEnemy : MonoBehaviour
         Debug.Log($"Wave {currentWave}: Spawned {enemiesToSpawn} enemies (Total this wave: {enemiesPerWave})");
 
         currentWave++;
+
+        UpdateWaveCounter();
     }
 
     void EnemiesForWave()
@@ -211,7 +219,7 @@ public class SpawnEnemy : MonoBehaviour
 
         if (WinScreen != null)
         {
-            WinScreen.SetActive(false);
+            WinScreen.SetActive(false); 
         }
 
         Time.timeScale = 1;
@@ -219,6 +227,8 @@ public class SpawnEnemy : MonoBehaviour
         Cursor.visible = false;
 
         StartTimer();
+
+        UpdateWaveCounter();
     }
 
     void Winer()
@@ -236,5 +246,13 @@ public class SpawnEnemy : MonoBehaviour
     private void OnDestroy()
     {
         GameSettings.EnemiesCountChanged -= OnEnemyCountChanged;
+    }
+
+    void UpdateWaveCounter()
+    {
+        if (waveCounterText != null)
+        {
+            waveCounterText.text = $"{currentWave - 1}/{maxWave}";
+        }
     }
 }

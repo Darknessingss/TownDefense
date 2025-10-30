@@ -185,3 +185,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 300
   currentHealth: 0
+  bottleBalanceObject: {fileID: 0}
+  BottleUserTime: 25
