@@ -1,3 +1,5 @@
+using System.Threading;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +19,23 @@ public class SpawnEnemy : MonoBehaviour
     public int MinEnemy = 1;
     public int MaxEnemy = 6;
 
+    public MonoBehaviour PlayerMovement;
+    [SerializeField] private GameObject WinScreen;
+
+    private void Awake()
+    {
+        GameSettings.EnemiesCountChanged += OnEnemyCountChanged;
+
+    }
+
+    private void OnEnemyCountChanged(int EnemyCount)
+    {
+       if(EnemyCount <= 0)
+        {
+            EndGame();
+        }
+    }
+
     void Start()
     {
         {
@@ -25,6 +44,12 @@ public class SpawnEnemy : MonoBehaviour
             timerSlider.value = 1f;
         }
         StartTimer();
+
+        if (WinScreen != null)
+        {
+            WinScreen.SetActive(false);
+        }
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -102,11 +127,6 @@ public class SpawnEnemy : MonoBehaviour
         Debug.Log($"Wave {currentWave}: Spawned {enemiesToSpawn} enemies (Total this wave: {enemiesPerWave})");
 
         currentWave++;
-
-        if (currentWave > maxWave)
-        {
-            EndGame();
-        }
     }
 
     void EnemiesForWave()
@@ -120,13 +140,19 @@ public class SpawnEnemy : MonoBehaviour
 
     void EndGame()
     {
-        isTimerRunning = false;
+        if (currentWave <= maxWave)
+            return;
 
         Debug.Log($"Game Over! Final wave: {currentWave}");
 
+
+        if (timerSlider != null)
         {
             timerSlider.gameObject.SetActive(false);
         }
+        Winer();
+      
+        
     }
 
     Vector3 GetRandomPointInCollider(Collider collider)
@@ -177,11 +203,38 @@ public class SpawnEnemy : MonoBehaviour
         currentWave = 1;
         isFirstWave = true;
 
+        if (timerSlider != null)
         {
             timerSlider.gameObject.SetActive(true);
             timerSlider.value = 1f;
         }
 
+        if (WinScreen != null)
+        {
+            WinScreen.SetActive(false);
+        }
+
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         StartTimer();
+    }
+
+    void Winer()
+    {
+        if (WinScreen != null)
+        {
+            WinScreen.SetActive(true);
+            PlayerMovement.enabled = false; 
+        }
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void OnDestroy()
+    {
+        GameSettings.EnemiesCountChanged -= OnEnemyCountChanged;
     }
 }

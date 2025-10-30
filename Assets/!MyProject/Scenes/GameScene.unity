@@ -2776,12 +2776,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3788235140296282745, guid: bdd20f56c75099b42ac646960fd2eb71, type: 3}
   currentWave: 1
-  maxWave: 5
+  maxWave: 2
   timerSlider: {fileID: 1986274440}
-  waveCooldown: 0.5
-  WinScreen: {fileID: 1497487312}
+  waveCooldown: 5
   MinEnemy: 1
-  MaxEnemy: 6
+  MaxEnemy: 5
+  PlayerMovement: {fileID: 859426245}
+  WinScreen: {fileID: 1497487312}
 --- !u!1 &211694093
 GameObject:
   m_ObjectHideFlags: 0
@@ -13566,7 +13567,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorsCount: 0
   peasantsCount: 0
-  enemiesCount: 0
 --- !u!4 &1163628407
 Transform:
   m_ObjectHideFlags: 0
