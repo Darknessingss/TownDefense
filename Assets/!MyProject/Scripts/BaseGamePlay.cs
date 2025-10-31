@@ -5,9 +5,9 @@ public class BaseGamePlay : MonoBehaviour
     public int maxHealth = 1500;
     public int currentHealth;
     public MonoBehaviour PlayerMovement;
+    public AudioClip loseSound;
 
     [SerializeField] private GameObject LoseScreen;
-
 
     void Start()
     {
@@ -18,6 +18,7 @@ public class BaseGamePlay : MonoBehaviour
         }
         Time.timeScale = 1;
     }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -29,8 +30,17 @@ public class BaseGamePlay : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
-        if (gameObject != null)
+        GameObject soundObject = new GameObject("LoseSoundObject");
+        AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+
+        if (loseSound != null)
+        {
+            audioSource.PlayOneShot(loseSound);
+        }
+
+        Destroy(soundObject, loseSound != null ? loseSound.length : 2f);
+
+        if (LoseScreen != null)
         {
             LoseScreen.SetActive(true);
             PlayerMovement.enabled = false;
@@ -38,6 +48,8 @@ public class BaseGamePlay : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter(Collision collision)

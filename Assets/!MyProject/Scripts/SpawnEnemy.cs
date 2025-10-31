@@ -13,11 +13,13 @@ public class SpawnEnemy : MonoBehaviour
     public Slider timerSlider;
     public float waveCooldown = 10f;
     public TMP_Text waveCounterText;
+    public AudioClip winSound;
 
     private int enemiesPerWave;
     private float currentTimer;
     private bool isTimerRunning = false;
     private bool isFirstWave = true;
+    private bool winSoundPlayed = false;
 
     public int MinEnemy = 1;
     public int MaxEnemy = 6;
@@ -28,12 +30,11 @@ public class SpawnEnemy : MonoBehaviour
     private void Awake()
     {
         GameSettings.EnemiesCountChanged += OnEnemyCountChanged;
-
     }
 
     private void OnEnemyCountChanged(int EnemyCount)
     {
-       if(EnemyCount <= 0)
+        if (EnemyCount <= 0)
         {
             EndGame();
         }
@@ -153,14 +154,11 @@ public class SpawnEnemy : MonoBehaviour
 
         Debug.Log($"Game Over! Final wave: {currentWave}");
 
-
         if (timerSlider != null)
         {
             timerSlider.gameObject.SetActive(false);
         }
         Winer();
-      
-        
     }
 
     Vector3 GetRandomPointInCollider(Collider collider)
@@ -188,7 +186,6 @@ public class SpawnEnemy : MonoBehaviour
 
     public void ForceNextWave()
     {
-
         if (isFirstWave)
         {
             SpawnFirstWave();
@@ -205,11 +202,11 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
-
     public void RestartGame()
     {
         currentWave = 1;
         isFirstWave = true;
+        winSoundPlayed = false;
 
         if (timerSlider != null)
         {
@@ -219,7 +216,7 @@ public class SpawnEnemy : MonoBehaviour
 
         if (WinScreen != null)
         {
-            WinScreen.SetActive(false); 
+            WinScreen.SetActive(false);
         }
 
         Time.timeScale = 1;
@@ -236,8 +233,21 @@ public class SpawnEnemy : MonoBehaviour
         if (WinScreen != null)
         {
             WinScreen.SetActive(true);
-            PlayerMovement.enabled = false; 
+            if (PlayerMovement != null)
+            {
+                PlayerMovement.enabled = false;
+            }
         }
+
+        if (!winSoundPlayed && winSound != null)
+        {
+            GameObject soundObject = new GameObject("WinSoundObject");
+            AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+            audioSource.PlayOneShot(winSound);
+            Destroy(soundObject, winSound.length + 1f);
+            winSoundPlayed = true;
+        }
+
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

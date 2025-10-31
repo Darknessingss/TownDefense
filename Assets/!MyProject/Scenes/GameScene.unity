@@ -1460,6 +1460,7 @@ GameObject:
   - component: {fileID: 144809551}
   - component: {fileID: 144809550}
   - component: {fileID: 144809549}
+  - component: {fileID: 144809552}
   m_Layer: 5
   m_Name: WarriorButton
   m_TagString: Untagged
@@ -1581,6 +1582,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144809547}
   m_CullTransparentMesh: 1
+--- !u!114 &144809552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144809547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcb244ece08ae9418873cefbc84de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: cc1b7528c0b025c419a398bd5e9e1de6, type: 3}
+  button: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1001 &146869330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2505,10 +2521,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3788235140296282745, guid: bdd20f56c75099b42ac646960fd2eb71, type: 3}
   currentWave: 1
-  maxWave: 10
+  maxWave: 3
   timerSlider: {fileID: 1986274440}
   waveCooldown: 5
   waveCounterText: {fileID: 1790584982}
+  winSound: {fileID: 8300000, guid: 38e4851f011f4344dac619cac1dcb287, type: 3}
   MinEnemy: 1
   MaxEnemy: 4
   PlayerMovement: {fileID: 859426245}
@@ -3267,6 +3284,7 @@ GameObject:
   - component: {fileID: 286501892}
   - component: {fileID: 286501891}
   - component: {fileID: 286501890}
+  - component: {fileID: 286501893}
   m_Layer: 5
   m_Name: PeasantButton
   m_TagString: Untagged
@@ -3388,6 +3406,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286501888}
   m_CullTransparentMesh: 1
+--- !u!114 &286501893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286501888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcb244ece08ae9418873cefbc84de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: cc1b7528c0b025c419a398bd5e9e1de6, type: 3}
+  button: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1001 &289245515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7253,7 +7286,6 @@ GameObject:
   - component: {fileID: 667195430}
   - component: {fileID: 667195429}
   - component: {fileID: 667195428}
-  - component: {fileID: 667195431}
   m_Layer: 5
   m_Name: ButtonReload
   m_TagString: Untagged
@@ -7375,19 +7407,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667195424}
   m_CullTransparentMesh: 1
---- !u!114 &667195431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667195424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!1001 &670490427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7629,7 +7648,6 @@ GameObject:
   - component: {fileID: 684446829}
   - component: {fileID: 684446828}
   - component: {fileID: 684446827}
-  - component: {fileID: 684446826}
   m_Layer: 5
   m_Name: ButtonReload
   m_TagString: Untagged
@@ -7657,19 +7675,6 @@ RectTransform:
   m_AnchoredPosition: {x: 11, y: -11}
   m_SizeDelta: {x: 851.3038, y: 344.5847}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &684446826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684446824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!114 &684446827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9292,6 +9297,7 @@ MonoBehaviour:
   maxHealth: 1500
   currentHealth: 0
   PlayerMovement: {fileID: 859426245}
+  loseSound: {fileID: 8300000, guid: ae91e54a8ec859b4c9010b6e03b81c40, type: 3}
   LoseScreen: {fileID: 24111399}
 --- !u!1001 &823861889
 PrefabInstance:
@@ -9815,7 +9821,6 @@ GameObject:
   - component: {fileID: 850241020}
   - component: {fileID: 850241019}
   - component: {fileID: 850241018}
-  - component: {fileID: 850241017}
   m_Layer: 5
   m_Name: ButtonReload
   m_TagString: Untagged
@@ -9843,19 +9848,6 @@ RectTransform:
   m_AnchoredPosition: {x: 11, y: -11}
   m_SizeDelta: {x: 851.3038, y: 344.5847}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &850241017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850241015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!114 &850241018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14101,7 +14093,6 @@ GameObject:
   - component: {fileID: 1246797485}
   - component: {fileID: 1246797484}
   - component: {fileID: 1246797483}
-  - component: {fileID: 1246797482}
   m_Layer: 5
   m_Name: ButtonMenu
   m_TagString: Untagged
@@ -14129,19 +14120,6 @@ RectTransform:
   m_AnchoredPosition: {x: 11, y: -481}
   m_SizeDelta: {x: 851.3038, y: 344.5847}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1246797482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246797480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!114 &1246797483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14359,7 +14337,6 @@ GameObject:
   - component: {fileID: 1319024422}
   - component: {fileID: 1319024421}
   - component: {fileID: 1319024420}
-  - component: {fileID: 1319024423}
   m_Layer: 5
   m_Name: ButtonMenu
   m_TagString: Untagged
@@ -14481,19 +14458,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319024418}
   m_CullTransparentMesh: 1
---- !u!114 &1319024423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319024418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!1001 &1321230757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20240,7 +20204,6 @@ GameObject:
   - component: {fileID: 1849616363}
   - component: {fileID: 1849616362}
   - component: {fileID: 1849616361}
-  - component: {fileID: 1849616364}
   m_Layer: 5
   m_Name: ButtonResume
   m_TagString: Untagged
@@ -20362,19 +20325,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849616357}
   m_CullTransparentMesh: 1
---- !u!114 &1849616364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849616357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!1001 &1858023467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22006,6 +21956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986274439}
   - component: {fileID: 1986274440}
+  - component: {fileID: 1986274441}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -22085,6 +22036,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1986274441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986274438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5d6bc1fee83e4428d3f19f9350b8fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundSlider: {fileID: 8300000, guid: caceaecb15a563742a7eb305ef1381cf, type: 3}
+  soundCooldown: 5
 --- !u!1001 &1991347077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22341,7 +22306,6 @@ GameObject:
   - component: {fileID: 2020017888}
   - component: {fileID: 2020017887}
   - component: {fileID: 2020017886}
-  - component: {fileID: 2020017885}
   m_Layer: 5
   m_Name: ButtonMenu
   m_TagString: Untagged
@@ -22369,19 +22333,6 @@ RectTransform:
   m_AnchoredPosition: {x: 11, y: -481}
   m_SizeDelta: {x: 851.3038, y: 344.5847}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2020017885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020017883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae56ee0d10323849b14d236facf8f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: d0290c61b72bcba4b8539512a839d242, type: 3}
 --- !u!114 &2020017886
 MonoBehaviour:
   m_ObjectHideFlags: 0

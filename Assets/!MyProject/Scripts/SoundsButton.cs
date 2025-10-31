@@ -3,19 +3,30 @@ using UnityEngine.UI;
 
 public class SoundsButton : MonoBehaviour
 {
-    [SerializeField] private AudioClip clickSound;
+    public AudioClip clickSound;
+
+    private Button button;
+    private AudioSource audioSource;
 
     void Start()
     {
-        Button button = GetComponent<Button>();
+        button = GetComponent<Button>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
+
         button.onClick.AddListener(PlayClickSound);
     }
 
     void PlayClickSound()
     {
-        if (SoundManager.Instance != null && clickSound != null)
+        if (clickSound != null && audioSource != null)
         {
-            SoundManager.Instance.PlaySound(clickSound);
+            audioSource.PlayOneShot(clickSound);
         }
     }
 }
