@@ -1594,9 +1594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcb244ece08ae9418873cefbc84de5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: cc1b7528c0b025c419a398bd5e9e1de6, type: 3}
-  button: {fileID: 0}
-  audioSource: {fileID: 0}
 --- !u!1001 &146869330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2523,11 +2520,11 @@ MonoBehaviour:
   currentWave: 1
   maxWave: 10
   timerSlider: {fileID: 1986274440}
-  waveCooldown: 35
+  waveCooldown: 30
   waveCounterText: {fileID: 1790584982}
   winSound: {fileID: 8300000, guid: 38e4851f011f4344dac619cac1dcb287, type: 3}
   MinEnemy: 1
-  MaxEnemy: 5
+  MaxEnemy: 8
   PlayerMovement: {fileID: 859426245}
   WinScreen: {fileID: 2005116166}
 --- !u!1 &211694093
@@ -3418,9 +3415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcb244ece08ae9418873cefbc84de5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: cc1b7528c0b025c419a398bd5e9e1de6, type: 3}
-  button: {fileID: 0}
-  audioSource: {fileID: 0}
 --- !u!1001 &289245515
 PrefabInstance:
   m_ObjectHideFlags: 0

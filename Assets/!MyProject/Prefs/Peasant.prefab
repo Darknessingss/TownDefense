@@ -186,3 +186,4 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   bottleBalanceObject: {fileID: 0}
+  BottleCreate: 10
