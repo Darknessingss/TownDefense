@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
+using Random = UnityEngine.Random;
 
 public class BottleBalance : MonoBehaviour
 {
@@ -34,11 +37,62 @@ public class BottleBalance : MonoBehaviour
     [SerializeField] private Button PeasantBuyButtonStatus;
     [SerializeField] private Button WarriorBuyButtonStatus;
 
+    public static class DestroyWarriorForBalance
+    {
+        public static Action<int> ZeroBalanceDestroyWarrior;
+    }
+
+    private void Awake()
+    {
+        DestroyWarriorForBalance.ZeroBalanceDestroyWarrior += BottleBalanceDestroyer;
+    }
+
+    private void OnDestroy()
+    {
+        DestroyWarriorForBalance.ZeroBalanceDestroyWarrior -= BottleBalanceDestroyer;
+    }
+
     private void Start()
     {
         UpdatePeasantLimitUI();
         UpdateUIBuyPeasant();
         UpdateUIBuyWarrior();
+    }
+
+    private void BottleBalanceDestroyer(int BottleWallet)
+    {
+        if(BottleWallet < 0)
+        {
+            DestroyOnWarrior();
+            this.BottleWallet = 0;
+            UpdateBottleUI();
+            Debug.Log("Баланс ушел в минус! Один Warrior уничтожен, баланс обнулен.");
+        }
+    }
+
+    private void DestroyOnWarrior()
+    {
+        GameObject[] warriorDestroy = GameObject.FindGameObjectsWithTag("Warrior");
+
+        if(warriorDestroy.Length > 0)
+        {
+            GameObject warriorToDestroy = warriorDestroy[0];
+            Destroy(warriorToDestroy);
+
+            Debug.Log($"Уничтожен Warrior. Осталось Warriors: {warriorDestroy.Length - 1}");
+        }
+        else
+        {
+            Debug.Log("Рыцарь не обнаружен, уничтожаем фермера");
+            GameObject[] peasantDestroy = GameObject.FindGameObjectsWithTag("Peasant");
+            if(peasantDestroy.Length > 0)
+            {
+                GameObject peasantToDestroy = peasantDestroy[0];
+                Destroy(peasantToDestroy);
+
+                Debug.Log($"Уничтожен Peasant. Осталось Peasant: {peasantDestroy.Length - 1}");
+            }    
+        }
     }
 
     public void OnWarriorBuyButtonClick()
@@ -50,6 +104,10 @@ public class BottleBalance : MonoBehaviour
                 BottleWallet -= warriorPrice;
                 UpdateBottleUI();
                 SpawnUnit(WarriorPrefab, WarriorSpawn, spawnWarrior, false);
+            }
+            if (BottleWallet < 0)
+            {
+                DestroyWarriorForBalance.ZeroBalanceDestroyWarrior?.Invoke(BottleWallet);
             }
         }
     }
@@ -70,7 +128,11 @@ public class BottleBalance : MonoBehaviour
                 else
                 {
                     Debug.Log($"Лимит крестьян достигнут! Максимум: {peasantLimit}");
-                }   
+                }
+                if (BottleWallet < 0)
+                {
+                    DestroyWarriorForBalance.ZeroBalanceDestroyWarrior?.Invoke(BottleWallet);
+                }
             }
         }
     }
@@ -198,6 +260,11 @@ public class BottleBalance : MonoBehaviour
     {
         BottleWallet -= amount;
         UpdateBottleUI();
+
+        if (BottleWallet < 0)
+        {
+            DestroyWarriorForBalance.ZeroBalanceDestroyWarrior?.Invoke(BottleWallet);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -5,7 +5,7 @@ public class GameSettings : MonoBehaviour
 
 {
     [Header("Game State")]
-    public int warriorsCount = 0;
+    public int WarriorsCount = 0;
     public int peasantsCount = 0;
     private int _enemiesCount = 0;
 
@@ -27,7 +27,7 @@ public class GameSettings : MonoBehaviour
     }
     void UpdateUnitCounts()
     {
-        warriorsCount = GameObject.FindGameObjectsWithTag("Warrior").Length;
+        WarriorsCount = GameObject.FindGameObjectsWithTag("Warrior").Length;
         peasantsCount = GameObject.FindGameObjectsWithTag("Peasant").Length;
         EnemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
